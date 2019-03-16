@@ -1,5 +1,9 @@
 package com.kam.coursechat.hacktheglobe;
 
+import android.content.Context;
+
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -13,7 +17,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    LocationManager myManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+    Location myLocation = myManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+    double longitude = myLocation.getLongitude();
+    double latitude = myLocation.getLatitude();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
