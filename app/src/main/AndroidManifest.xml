@@ -52,7 +52,7 @@
         <activity
             android:name=".Checklist"
             android:label="@string/title_activity_checklist"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
     </application>
 
 </manifest>

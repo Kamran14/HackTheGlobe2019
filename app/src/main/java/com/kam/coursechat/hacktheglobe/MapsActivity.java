@@ -3,11 +3,13 @@ package com.kam.coursechat.hacktheglobe;
 import android.Manifest;
 import android.content.Context;
 
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.support.v4.content.ContextCompat;
 import android.content.pm.PackageManager;
@@ -50,10 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, MY_LOCATION_REQUEST_CODE );
-        }
+
 
 
 
@@ -88,9 +87,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    public void toChecklist (View view)
-    {
-        Intent intent = new Intent(MapsActivity.this, )
+    public void toChecklist (View view){
+        Intent intent = new Intent(MapsActivity.this, Checklist.class);
+        startActivity(intent);
     }
 
     /**
@@ -105,7 +104,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, MY_LOCATION_REQUEST_CODE );
+        }
         myManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         myLocation = myManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         longitude = myLocation.getLongitude();
@@ -113,7 +115,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setMyLocationEnabled(true);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(latitude, longitude);;//new LatLng(latitude, longitude);
+        LatLng sydney = new LatLng(latitude, longitude);//new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
