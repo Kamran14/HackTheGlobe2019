@@ -16,20 +16,25 @@ import java.util.List;
 public class Checklist extends AppCompatActivity {
     ListView wifiListView;
     ArrayAdapter myAdapter;
-    String[] instructions = {"Get out of your home/office", "RUN"}; //Add Instructions here
+    String[] instructions = {"Get out of your home/office", "Do not use the elevators", "Proceed directly to "}; //Add Instructions here
+    String[] ruralInstructions = {" ", "Find shelter immediately", "Do not stray off roads without navigation"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checklist);
+        if (globalData.getArea()) {
         myAdapter = new ArrayAdapter<String>(this, R.layout.content_checklist, instructions);
+        }
+        else{
+            myAdapter = new ArrayAdapter<String>(this, R.layout.content_checklist, ruralInstructions);
+        }
         wifiListView = (ListView) findViewById(R.id.wifiScanResList);
         wifiListView.setAdapter(myAdapter);
         wifiListView.setEnabled(true);
-
     }
 
     @Override
-
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
 

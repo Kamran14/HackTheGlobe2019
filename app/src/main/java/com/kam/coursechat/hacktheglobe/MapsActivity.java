@@ -87,6 +87,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
+    public void urbanRuralToggle (View view){
+        globalData.toggleArea();
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -108,10 +111,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         longitude = myLocation.getLongitude();
         latitude = myLocation.getLatitude();
 
+        //mMap.setMaxZoomPreference(10);
         mMap.setMyLocationEnabled(true);
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(latitude, longitude);//new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.animateCamera( CameraUpdateFactory.zoomTo( 14.0f ) );
     }
 }
