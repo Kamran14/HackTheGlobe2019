@@ -16,7 +16,7 @@ import java.util.List;
 public class Checklist extends AppCompatActivity {
     ListView wifiListView;
     ArrayAdapter myAdapter;
-    String[] instructions = {"Get out of your home/office","RUN"};
+    String[] instructions = {"Get out of your home/office", "RUN"}; //Add Instructions here
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
