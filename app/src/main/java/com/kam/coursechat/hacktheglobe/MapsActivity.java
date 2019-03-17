@@ -87,7 +87,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-    
+
+    public void toChecklist (View view)
+    {
+        Intent intent = new Intent(MapsActivity.this, )
+    }
 
     /**
      * Manipulates the map once available.
