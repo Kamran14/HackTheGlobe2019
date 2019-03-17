@@ -6,8 +6,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class Checklist extends AppCompatActivity {
+    ListView checklistview;
+    ArrayAdapter
+    String[] instruction = {"The set of instructions for Urban Areas", "Evacuate your office!"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +28,8 @@ public class Checklist extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
 
         getMenuInflater().inflate(R.menu.main, menu);
-        wifiListView = (ListView) findViewById(R.id.wifiScanResList);
-        wifiListView.setEnabled(true);
+        checklistview = (ListView) findViewById(R.id.wifiScanResList);
+        checklistview.setEnabled(true);
 
         return true;
     }
