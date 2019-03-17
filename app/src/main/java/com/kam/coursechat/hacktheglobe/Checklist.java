@@ -16,8 +16,8 @@ import java.util.List;
 public class Checklist extends AppCompatActivity {
     ListView wifiListView;
     ArrayAdapter myAdapter;
-    String[] instructions = {"Get out of your home/office", "Do not use the elevators", "Proceed directly to "}; //Add Instructions here
-    String[] ruralInstructions = {" ", "Find shelter immediately", "Do not stray off roads without navigation"};
+    String[] instructions = {"Get out of your home/office", "Do not use the elevators", "Stay clear of unstable structures"}; //Add Instructions here
+    String[] ruralInstructions = {"Establish contact with first responders", "Proceed to high ground", "Find shelter immediately", "Do not stray off roads without navigation", "Do not provoke any wildlife"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
